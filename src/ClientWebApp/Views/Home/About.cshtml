@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "About You";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<div>
+    @{
+        var claimsPrincipal = User as System.Security.Claims.ClaimsPrincipal;
+
+        foreach (var claim in claimsPrincipal.Claims)
+        {
+            <p>
+                @claim.OriginalIssuer <br />
+                @claim.Type : @claim.Value
+            </p>
+
+        }
+    }
+</div>
